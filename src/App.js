@@ -5,7 +5,7 @@ import ResetPassword from "./ResetPassword";
 import { toast } from 'react-toastify';
 import ForgotPassword from "./ForgotPassword";
 
-export const url=`http://localhost:8000/users`
+export const url=`https://password-rest-fu53.onrender.com/users`
 
 function App() {
   return (
