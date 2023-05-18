@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+}
+
+.login-main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.formm-outer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.formm {
+  width: 600px;
+}
+.login-fields {
+  display: flex;
+  flex-direction: column;
+}
+.checkbox-div {
+  display: flex;
+  align-items: center;
+}
+.checkbox-div > p {
+  margin: 0px;
+  font-weight: 600;
+  font-size: 15px;
+}
