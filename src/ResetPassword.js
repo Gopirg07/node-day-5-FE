@@ -41,6 +41,7 @@ export default function ResetPassword() {
       console.log(res);
       toast.success(res.data.message);
       localStorage.clear()
+      navigate("/forget-password");
     } catch (error) {
       toast.error(error.response.data.message);
     }
