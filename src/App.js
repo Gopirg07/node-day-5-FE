@@ -6,8 +6,7 @@ import ResetPassword from "./components/ResetPassword";
 import Login from "./components/Login";
 import CreateAccount from "./components/CreateAccount";
 import Home from "./components/Home";
-
-// export const url=`https://password-rest-fu53.onrender.com/users` 
+ 
 export const url=`http://localhost:9000` 
 
 function App() {
