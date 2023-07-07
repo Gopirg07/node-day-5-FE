@@ -1,28 +1,26 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useNavigate} from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import { TextField } from "@mui/material";
-import axios from "axios"; 
+import axios from "axios";
 import { toast } from "react-toastify";
-import { url } from "./App";
-
-
+import { url } from "../App";
+import { Link } from "react-router-dom/dist";
 
 export default function ForgotPassword() {
   let [show, setShow] = useState(false);
   let [email, setEmail] = useState("");
   const navigate = useNavigate();
 
-   
-  const done = async (email) => { 
+  const done = async (email) => {
     let payload = { email };
-    
+
     console.log("payload ==", payload);
     try {
-      let res = await axios.post(`${url}/newRandomString`, payload);
+      let res = await axios.post(`${url}/users/forgetPassword`, payload);
       console.log(res);
-      localStorage.setItem("Random String", res.data.randomS.randomString );
+      localStorage.setItem("RandomString", res.data.randomS.randomString);
       toast.success(res.data.message);
       setShow(true);
     } catch (error) {
@@ -30,15 +28,12 @@ export default function ForgotPassword() {
       setShow(false);
     }
   };
-  
 
   return (
     <div className="login-main">
       <div className="formm-outer">
         {show ? (
-          <Form
-            className="formm shadow-lg p-3 mb-5 bg-white rounded" 
-          >
+          <Form className="formm shadow-lg p-3 mb-5 bg-white rounded">
             <div style={{ textAlign: "center", fontFamily: "Montserrat" }}>
               <h2 style={{}}>
                 {" "}
@@ -70,9 +65,7 @@ export default function ForgotPassword() {
             </div>
           </Form>
         ) : (
-          <Form
-            className="formm shadow-lg p-3 mb-5 bg-white rounded" 
-          >
+          <Form className="formm shadow-lg p-3 mb-5 bg-white rounded">
             <div style={{ textAlign: "center", fontFamily: "Montserrat" }}>
               <h2 style={{}}>
                 {" "}
@@ -89,13 +82,13 @@ export default function ForgotPassword() {
             <div className="login-fields">
               <TextField
                 label="Enter The Email"
-                variant="outlined"  
+                variant="outlined"
                 style={{
                   marginTop: "20px",
                   fontSize: "15px",
                 }}
-                onChange={(e)=>setEmail(e.target.value)}
-              /> 
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <Button
                 style={{
                   marginTop: "15px",
@@ -104,14 +97,26 @@ export default function ForgotPassword() {
                   color: "#fff",
                   borderRadius: "20px",
                 }}
-                variant="primary" 
+                variant="primary"
                 onClick={() => done(email)}
               >
                 Submit
               </Button>
             </div>
-
-             
+            <div style={{ marginTop: "25px" }}>
+              <div className="text-center mb-1">
+                <Link to="/account-registration" underline="hover">
+                  {" "}
+                  Create A New Account{" "}
+                </Link>
+              </div>
+              <div className="text-center">
+                <Link to="/" underline="hover">
+                  {" "}
+                  Already Have A Account? Login.{" "}
+                </Link>
+              </div>
+            </div>
           </Form>
         )}
       </div>

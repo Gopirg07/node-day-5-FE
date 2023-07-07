@@ -4,21 +4,20 @@ import Form from "react-bootstrap/Form";
 import { Checkbox, TextField } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { url } from "./App";
+import { url } from "../App";
 import { useNavigate } from "react-router-dom";
 
 export default function ResetPassword() {
   let [show, setShow] = useState(false);
   let [password, setPassword] = useState("");
   let navigate = useNavigate();
-
+  
+  let token = localStorage.getItem("RandomString");
+  console.log(token);
+  let payload={token}
   async function entryCheck() {
     try {
-      let ResetToken = localStorage.getItem("Random String");
-      console.log(ResetToken);
-      let res = await axios.get(`${url}/resetPasswordCheck`, {
-        headers: { Authorization: `Bearer ${ResetToken}` },
-      });
+      let res = await axios.post(`${url}/users/resetPasswordCheck`,payload);
       console.log(res);
       toast.success(res.data.message);
     } catch (error) {
@@ -33,14 +32,14 @@ export default function ResetPassword() {
   async function create(password) {
     let payload = { password };
     try {
-      let Token = localStorage.getItem("Random String");
+      let Token = localStorage.getItem("RandomString");
       console.log(Token);
-      let res = await axios.post(`${url}/resetPassword`, payload, {
+      let res = await axios.post(`${url}/users/resetPassword`, payload, {
         headers: { Authorization: `Bearer ${Token}` },
       });
       console.log(res);
       toast.success(res.data.message);
-      localStorage.clear()
+      localStorage.clear();
       navigate("/forget-password");
     } catch (error) {
       toast.error(error.response.data.message);

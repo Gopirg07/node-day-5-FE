@@ -29,3 +29,12 @@
   font-weight: 600;
   font-size: 15px;
 }
+
+.homepage{
+  min-height: 100vh;
+  background-color: #d50808;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} 
