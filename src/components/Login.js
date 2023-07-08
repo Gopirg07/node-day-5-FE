@@ -44,9 +44,7 @@ export default function Login() {
     try {
       let res = await axios.post(`${url}/users/signIn`, payload);
       console.log(res);
-      toast.success(res.data.message);
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("role", res.data.role);
+      toast.success(res.data.message); 
       navigate("/home");
     } catch (error) {
       toast.error(error.response.data.message);

@@ -30,11 +30,21 @@
   font-size: 15px;
 }
 
-.homepage{
+.homepage-main{
   min-height: 100vh;
   background-color: #d50808;
   color: white;
+
+} 
+.homepage-btn-div{
+  display: flex;
+  justify-content: end;
+}
+
+.homepage{ 
   display: flex;
   flex-direction: column;
   justify-content: center;
-} 
+  min-height: 90vh; 
+}  
+ 
